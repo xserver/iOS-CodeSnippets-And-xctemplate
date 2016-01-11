@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>mcolle</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>@property (nonatomic, strong) UICollectionView *collection;
+@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+
+#pragma mark - UICollectionView
+static NSString *identifier = @"&lt;#identifier#&gt;";
+- (UICollectionView *)collection {
+    if (_collection == nil) {
+        
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.minimumLineSpacing = 100;
+        layout.minimumInteritemSpacing = 20;
+        layout.itemSize = CGSizeMake(80, 80);
+        //        layout.estimatedItemSize =
+        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        layout.headerReferenceSize = CGSizeMake(10, 100);
+        layout.footerReferenceSize = CGSizeMake(20, 200);
+        layout.sectionInset = UIEdgeInsetsMake(12, 6, 12, 6);
+        _flowLayout = layout;
+        
+        CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
+        UICollectionView *collec = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout:layout];
+        collec.backgroundColor = [UIColor brownColor];
+        collec.pagingEnabled = YES;
+        collec.showsHorizontalScrollIndicator = NO;
+        collec.showsVerticalScrollIndicator = NO;
+        collec.dataSource = self;
+        collec.delegate = self;
+        _collection = collec;
+        
+        [_collection registerClass:[JMCell class] forCellWithReuseIdentifier:identifier];
+    }
+    return _collection;
+}
+
+#pragma mark - UICollectionViewDataSource
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 5;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    &lt;#class#&gt; *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier
+                                                                forIndexPath:indexPath];
+    
+    cell.contentView.backgroundColor = [ViewController randomColor];
+    cell.label.text = [NSString stringWithFormat:@"%ld %ld", indexPath.section, indexPath.row];
+    
+    return cell;
+}
+
+//  Header &amp; Footer
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    
+    UICollectionReusableView *reusableview = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+        
+        [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView"];
+    });
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        
+        UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+        reusableview = headerView;
+        headerView.backgroundColor = [UIColor greenColor];
+    }
+    
+    if (kind == UICollectionElementKindSectionFooter) {
+        
+        UICollectionReusableView *footerview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView" forIndexPath:indexPath];
+        reusableview = footerview;
+        reusableview.backgroundColor = [UIColor yellowColor];
+    }
+    
+    return reusableview;
+}
+
+#pragma mark - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+@end
+
+#pragma mark - UICollectionViewCell
+@interface &lt;#class name#&gt; : UICollectionViewCell
+@property (strong, nonatomic) UIImageView *icon;
+@property (strong, nonatomic) UILabel *title;
+@end
+
+@implementation &lt;#class name#&gt;
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    
+    if (self = [super initWithFrame:frame]) {
+        
+        _icon = [[UIImageView alloc] init];
+        [self addSubview:_icon];
+        
+        _title = [[UILabel alloc] CGRectMake(0, 0, self.width, 30)];
+        [self addSubview:_title];
+    }
+    
+    return self;
+}
+
+@end
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>B8FCAA3F-06AA-4DC5-98AA-77410669540B</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Create Collection &amp; Delegate</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

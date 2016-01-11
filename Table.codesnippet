@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>mtab</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#import &lt;UITableView+FDTemplateLayoutCell.h&gt;
+#import &lt;Masonry.h&gt;
+
+@property (nonatomic, strong) UITableView *tab;
+
+[self.view addSubview:self.tab];
+[self.tab mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(self.view.mas_top);
+    make.left.equalTo(self.view.mas_left);
+    make.bottom.equalTo(self.view.mas_bottom);
+    make.right.equalTo(self.view.mas_right);
+}];
+
+#pragma mark - Table
+static NSString *kCellIdentifier = @"YourCellClass";
+- (UITableView *)tab {
+    
+    if (_tab == nil) {
+        _tab = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tab.dataSource = self;
+        _tab.delegate = self;
+        _tab.separatorStyle = UITableViewCellSelectionStyleNone;
+        _tab.rowHeight = &lt;#default height#&gt;;
+        
+        _tab.sectionIndexColor = [UIColor blueColor];
+        _tab.sectionIndexBackgroundColor = [UIColor whiteColor];
+        
+        _tab.sectionIndexTrackingBackgroundColor = [UIColor greenColor];
+        _tab.separatorColor = [UIColor purpleColor];
+        
+        [_tab registerClass:&lt;#(__unsafe_unretained Class)#&gt; forCellReuseIdentifier:kCellIdentifier];
+        
+        UINib *nib = [UINib nibWithNibName:&lt;#name#&gt; bundle:nil];
+        [_tab registerNib:nib forCellReuseIdentifier:kCellIdentifier];
+        
+        nib = [UINib nibWithNibName:&lt;#name#&gt; bundle:nil];
+        [_tab registerNib:nib forHeaderFooterViewReuseIdentifier:&lt;#(NSString *)#&gt;];
+        
+        _tab.tableHeaderView = [UIView viewWithNib:&lt;#name#&gt;];
+    }
+    
+    return _tab;
+}
+
+- (void)configureCell:(id)abstractCell atIndexPath:(NSIndexPath *)indexPath {
+    YourCellClass *cell = abstractCell;
+    
+}
+
+#pragma mark == UITableView DataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return &lt;#expression#&gt;;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return &lt;#expression#&gt;;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    YourCellClass *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
+    [self configureCell:cell atIndexPath:indexPath];
+    
+    
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                   reuseIdentifier:kCellIdentifier];
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
+    
+    
+    return cell;
+}
+
+#pragma mark == UITableView Delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat h = [tableView fd_heightForCellWithIdentifier:kCellIdentifier
+                                         cacheByIndexPath:indexPath
+                                            configuration:^(id cell) {
+                                                [self configureCell:cell atIndexPath:indexPath];
+                                            }];
+    return h;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    
+}
+
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>BB6EA2DF-A168-41E7-896C-31CFDA751DB1</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Create Table &amp; Delegate</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

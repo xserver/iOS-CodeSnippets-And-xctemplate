@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>mtl</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#import "MTLModel.h"
+#import &lt;MTLJSONAdapter.h&gt;
+
+@interface &lt;#Class#&gt; : MTLModel &lt;MTLJSONSerializing&gt;
+
+
++ (instancetype)fromJSON:(NSDictionary *)JSON;
++ (NSArray *)fromJSONArray:(NSArray *)array;
+
+@end
+
+
+
+@implementation JYContactObj
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"xx":@"xx",
+             };
+}
+
++ (instancetype)fromJSON:(NSDictionary *)JSON {
+    NSError *error;
+    id obj = [MTLJSONAdapter modelOfClass:self.class fromJSONDictionary:JSON error:&amp;error];
+    if (error) {
+        LogError(@"%@", error);
+    }
+    return obj;
+}
+
++ (NSArray *)fromJSONArray:(NSArray *)array {
+    NSError *error;
+    NSArray *ay = [MTLJSONAdapter modelsOfClass:self.class fromJSONArray:array error:&amp;error];
+    if (error) {
+        LogError(@"%@", error);
+    }
+    return ay;
+}
+
+@end</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>A3F0A22B-3BE5-4EC6-8430-6DA425C18308</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>MTLModel</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
