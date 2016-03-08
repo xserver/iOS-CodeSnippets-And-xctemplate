@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>mpage</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#pragma mark == request __XX__
+- (void)request__XX__ListFirstPage {
+    
+    [self request__XX__ListWithSequence:@(-1)];
+}
+
+- (void)request__XX__ListNextPage {
+    
+    &lt;#model#&gt; *last = [self.list lastObject];
+    if (last) {
+        [self request__XX__ListWithSequence:last];
+    } else {
+        [self request__XX__ListWithSequence:@(-1)];
+    }
+}
+
+- (void)request__XX__ListWithSequence:(id)seq {
+    
+    YTKRequest *api = [[&lt;#API#&gt; alloc] init&lt;#...#&gt;];
+    //    api.ignoreCache = YES;
+    
+    WeakSelf;
+    [api startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
+        
+        [weakself.reservationView endRefreshing];
+        
+        [weakself.view hideHUD];
+        if ([request isSuccess]) {
+            
+            [weakself parser__XX__Json:request.responseJSONObject];
+            
+        } else if ([request isCommonErrorAndHandle]) {
+            return ;
+        } else {
+            [weakself.view showHUDForError:request.businessErrorMessage];
+        }
+        
+    } failure:^(YTKBaseRequest *request) {
+        
+        [weakself.reservationView endRefreshing];
+        
+        [weakself.view showHUDForError:request.requestErrorMessage];
+    }];
+}
+
+- (void)parser__XX__Json:(NSDictionary *)json {
+    
+    if (json) {
+        //  Tips: 后台要提供这次的请求的 seq
+        NSNumber *seq = json[@"seq"];
+        if (seq &amp;&amp; [seq isKindOfClass:[NSNumber class]]) {
+            
+            NSArray *list = json[@"res_task_list"];
+            if (list) {
+                
+                list = [JSReservationCellMode fromJSONArray:list];
+                
+                if ([seq integerValue] == -1) {
+                    [self.reservationView refreshWithData:list];
+                } else {
+                    [self.reservationView addMoreWithData:list];
+                }
+            }
+        }
+        
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>BB1781D6-E5BE-43C7-949C-140440905D45</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>mm page</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
