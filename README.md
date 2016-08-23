@@ -10,14 +10,14 @@
 
 文件名 | 快捷键 | 代码段
 ----|------|----
-mm-property-Assign| ppta |  @property (nonatomic, assign)
-mm-property-Copy| pptcopy |  @property (nonatomic, copy)
-mm-property-Strong| pptstrong |  @property (nonatomic, strong)
-mm-property-Weak| pptweak |  @property (nonatomic, weak)
+mm-property-Assign| mpa |  @property (nonatomic, assign)
+mm-property-Copy| mpc |  @property (nonatomic, copy)
+mm-property-Strong| mps |  @property (nonatomic, strong)
+mm-property-Weak| mpw |  @property (nonatomic, weak)
 -||
 mm-enum| men |  NS_ENUM
 mm-opt| mopt |  NS_OPTIONS
-mm-type-block| mtblock |  typedef block
+mm-type-block| mtb |  typedef block
 -||
 mm-rac_strongify| @s |  @strongify(self);
 mm-rac_weakify| @w |  @weakify(self);
