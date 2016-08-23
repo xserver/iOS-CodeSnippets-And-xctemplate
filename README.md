@@ -1,7 +1,6 @@
 # iOS CodeSnippets And xctemplate
-
-## 前言
-代码规范，抓到放小，注意粒度，太细致则难以执行。
+>代码规范，抓到放小，注意粒度，太细致则难以执行。
+>通过 template and code snippets 可以解决一半问题
 
 ## UIViewController 模板
 
@@ -81,12 +80,10 @@ mm-enum| men |  NS_ENUM
 mm-opt| mopt |  NS_OPTIONS
 mm-type-block| mtb |  typedef block
 -||
-mm-Picker| mpicker |  UIPickerView
 mm-Table| mtab |  UITableView
 mm-Collection| mcolle |  UICollectionView
--||
-mm-Mantle| mtl |  MTLModel
-mm-function-create| mfun |  create function
+mm-Picker| mpicker |  UIPickerView
+
 
 
 #### 同步共享工具
