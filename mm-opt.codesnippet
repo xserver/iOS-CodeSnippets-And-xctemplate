@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>nsoptions</string>
+	<string>mopt</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>CodeBlock</string>
+		<string>All</string>
 		<string>TopLevel</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
@@ -19,11 +19,9 @@
 	<key>IDECodeSnippetIdentifier</key>
 	<string>A1085F2B-0C38-4E64-885B-A8CD4C14A75A</string>
 	<key>IDECodeSnippetLanguage</key>
-	<string>Xcode.SourceCodeLanguage.C</string>
-	<key>IDECodeSnippetSummary</key>
-	<string>Declare a new enumerated type with combinable bitmask values.</string>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Enumerated Type Declaration (NS_OPTIONS)</string>
+	<string>NS_OPTIONS</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

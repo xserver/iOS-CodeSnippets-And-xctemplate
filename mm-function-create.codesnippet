@@ -3,22 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>mif</string>
+	<string>mfun</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>    if (&lt;#condition#&gt; == nil) {
-        &lt;#statements#&gt;
-    }
-    return &lt;#expression#&gt;;</string>
+	<string>- (void)&lt;#name#&gt; {
+    return ;
+}</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>8C2BAE8B-BB7D-41ED-80D0-8B808E0C4211</string>
+	<string>D1AD0E81-1776-4878-9BFB-1908E632A30B</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>if == nil</string>
+	<string>Function Create</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
